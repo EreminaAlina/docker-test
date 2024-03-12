@@ -1,11 +1,16 @@
-version: '3.5'
 services:
   app:
     build: .
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: package.json
     ports:
-      - "8080:8080"
-    volumes:
-      - .:/app
+      - "3000:3000"
     environment:
       - HOST=0.0.0.0
-    tty: true
