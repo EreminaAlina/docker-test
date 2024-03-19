@@ -7,9 +7,11 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - &&\
 
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm install
+#COPY package*.json ./
+#RUN npm install
 
 COPY . .
 
-CMD ["npm", "run", "dev"]
+#CMD ["npm", "run", "dev"]
+ENTRYPOINT ["tail"]
+CMD ["-f","/bin/bash"]
